@@ -1,3 +1,5 @@
+const path = require("path");
+
 const MODE = "development";
 // const MODE = "production";
 
@@ -10,8 +12,20 @@ const config = {
   },
 
   output: {
-    path: `${__dirname}/dist/`,
-    filename: "[name].bundle.js"
+    path: path.resolve(__dirname, "/dist/"),
+    filename: "[name].bundle.js",
+    publicPath: "/dist/"
+  },
+
+  devServer: {
+    contentBase: path.resolve(__dirname, "./public"),
+    host: "0.0.0.0",
+    inline: true,
+    open: true,
+    overlay: {
+      warnings: true,
+      errors: true
+    }
   },
 
   module: {

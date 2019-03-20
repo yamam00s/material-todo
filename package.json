@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "webpack-dev-server --hot --no-inline --content-base public/ --watch-content-base --open-page index.html",
+    "serve": "webpack-dev-server --hot --open-page index.html",
     "build": "webpack",
     "lint": "eslint ./src --fix"
   },
