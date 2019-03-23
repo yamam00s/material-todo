@@ -1,4 +1,4 @@
-import ItemAdd from "../controllers/ItemAdd";
+import ItemAdd from '../controllers/ItemAdd';
 
 export default class ItemView {
   mounted() {

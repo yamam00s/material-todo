@@ -10,6 +10,10 @@ module.exports = {
     },
     'rules': {
         'indent': ['error', 2],
+        "quotes": [2, "single"],
+        "single": { "allowTemplateLiterals": true },
+        "no-console": "off",
+        "prettier/prettier": ["error", { "semi": true, "singleQuote": true }]
     },
     'parserOptions': {
         'ecmaVersion': 2018,

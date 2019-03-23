@@ -1,5 +1,5 @@
-import ItemModel from "../models/ItemModel";
-import createListElement from "../utility/createListElement";
+import ItemModel from '../models/ItemModel';
+import createListElement from '../utility/createListElement';
 
 export default class ItemAdd {
   /**
@@ -8,7 +8,7 @@ export default class ItemAdd {
   addTodoList(inputItem) {
     this.inputItem = new ItemModel(inputItem);
     const todoAddElement = createListElement(this.inputItem);
-    const todoListElement = document.querySelector(".js-todoList");
+    const todoListElement = document.querySelector('.js-todoList');
     todoListElement.innerHTML = todoAddElement;
   }
 }
