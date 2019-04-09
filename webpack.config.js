@@ -1,25 +1,25 @@
-const path = require("path");
+const path = require('path');
 
-const MODE = "development";
-// const MODE = "production";
+const MODE = 'development';
+// const MODE = 'production';
 
 const config = {
   mode: MODE,
-  devtool: "source-map",
+  devtool: 'source-map',
 
   entry: {
-    app: ["./src/app.js"]
+    app: ['./src/app.js']
   },
 
   output: {
-    path: path.resolve(__dirname, "/dist/"),
-    filename: "[name].bundle.js",
-    publicPath: "/dist/"
+    path: path.resolve(__dirname, '/dist/'),
+    filename: '[name].bundle.js',
+    publicPath: '/dist/'
   },
 
   devServer: {
-    contentBase: path.resolve(__dirname, "./public"),
-    host: "0.0.0.0",
+    contentBase: path.resolve(__dirname, './public'),
+    host: '0.0.0.0',
     inline: true,
     open: true,
     overlay: {
@@ -33,39 +33,39 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               url: false,
               importLoaders: 2
             }
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               // eslint-disable-next-line global-require
-              plugins: [require("autoprefixer")({ grid: true })]
+              plugins: [require('autoprefixer')({ grid: true })]
             }
           },
           {
-            loader: "sass-loader"
+            loader: 'sass-loader'
           }
         ]
       },
       {
         test: /\.(gif|png|jpg|eot|wof|woff|woff2|ttf|svg)$/,
-        loader: "url-loader"
+        loader: 'url-loader'
       },
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
           presets: [
             [
-              "@babel/preset-env"
-              // {"useBuiltIns": "usage"}
+              '@babel/preset-env'
+              // {'useBuiltIns': 'usage'}
             ]
           ]
         }

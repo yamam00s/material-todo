@@ -1,4 +1,4 @@
-import ItemView from './modules/views/ItemView';
+import ItemView from './views/ItemView';
 
 const itemView = new ItemView();
 itemView.mounted();

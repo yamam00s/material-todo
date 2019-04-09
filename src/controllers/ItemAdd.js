@@ -1,5 +1,5 @@
 import ItemModel from '../models/ItemModel';
-import createListElement from '../utility/createListElement';
+import createListElement from '../utils/createListElement';
 
 export default class ItemAdd {
   /**
