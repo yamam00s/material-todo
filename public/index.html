@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Todo</title>
+    <!-- Style -->
+    <!-- <script type="text/javascript" src="/assets/index.css"></script> -->
 </head>
 <body>
-    <main class="app">
-        <h3 class="uk-card-title">Todo List</h3>
+    <main class="todo-app">
 
-        <form action="" class="">
-            <input class="js-addItem-value" type="text" placeholder="Todo name">
+        <form action="" id="js-form">
+            <input id="js-form-input" type="text" placeholder="Please add todo">
         </form>
 
-        <ul class="js-todoList">
-        </ul>
+        <div id="js-todo-list">
+        </div>
+
+        <footer class="footer">
+            <span id="js-todo-count">Todoアイテム数: 0</span>
+        </footer>
 
     </main>
     <!-- script -->
-    <script type="text/javascript" src="/dist/app.bundle.js"></script>
+    <script type="text/javascript" src="/dist/index.bundle.js"></script>
 </body>
 </html>
