@@ -27,7 +27,7 @@ export function createElement(strings, ...values) {
     const value = values[index - 1];
     // 文字列の場合のみエスケープ
     if (typeof value === 'string') {
-      return prev + helpers.escapeSpecialChars(value);
+      return prev + helpers.escapeSpecialChars(value) + current;
     }
     return prev + String(value) + current;
   });
