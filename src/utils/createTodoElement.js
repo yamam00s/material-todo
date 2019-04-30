@@ -1,4 +1,4 @@
-const helper = {
+const helpers = {
   escapeSpecialChars(str) {
     return str
       .replace(/&/g, '&amp;')
@@ -27,11 +27,11 @@ export function createElement(strings, ...values) {
     const value = values[index - 1];
     // 文字列の場合のみエスケープ
     if (typeof value === 'string') {
-      return prev + helper.escapeSpecialChars(value);
+      return prev + helpers.escapeSpecialChars(value);
     }
     return prev + String(value) + current;
   });
-  return helper.htmlToTemplateElement(htmlString);
+  return helpers.htmlToTemplateElement(htmlString);
 }
 
 /**
@@ -40,7 +40,7 @@ export function createElement(strings, ...values) {
  * @param {Element} bodyElement コンテナ要素の中身となる要素
  * @param {Element} containerElement コンテナ要素
  */
-export function render(bodyElement, containerElement) {
+export function renderElement(bodyElement, containerElement) {
   // rootElementの中身を空にする
   // eslint-disable-next-line no-param-reassign
   containerElement.innerHTML = '';
