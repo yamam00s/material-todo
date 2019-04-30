@@ -53,4 +53,17 @@ export default class TodoListModel extends EventEmitter {
     this.itemList.push(todoItem);
     this.emitChange();
   }
+
+  /**
+   * 指定したidのTodoItemのcompletedを更新する
+   * @param {{ id:number, completed: boolean }}
+   */
+  updateTodo({ id, completed }) {
+    const todoItem = this.itemList.find(item => item.id === id);
+    if (!todoItem) {
+      return;
+    }
+    todoItem.completed = completed;
+    this.emitChange();
+  }
 }

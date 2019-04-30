@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import TodoListModel from './models/TodoListModel';
 import TodoItemModel from './models/TodoItemModel';
 import { createElement, renderElement } from './utils/createTodoElement';
@@ -20,8 +21,25 @@ export default class App {
     this.todoListModel.onChange(() => {
       const todoListElement = createElement`<ul />`;
       const todoItemList = this.todoListModel.getTodoItemList();
-      todoItemList.forEach(item => {
-        const todoItemElement = createElement`<li>${item.title}</li>`;
+
+      todoItemList.forEach(todoItem => {
+        const todoItemElement = todoItem.completed
+          ? createElement`<li><input type="checkbox" class="checkbox" checked><s>${
+            todoItem.title
+          }</s></input></li>`
+          : createElement`<li><input type="checkbox" class="checkbox">${
+            todoItem.title
+          }</input></li>`;
+
+        // チェックボックスがトグルしたときのイベントにリスナー関数を登録
+        const inputCheckboxElement = todoItemElement.querySelector('.checkbox');
+        inputCheckboxElement.addEventListener('change', () => {
+          this.todoListModel.updateTodo({
+            id: todoItem.id,
+            completed: !todoItem.completed
+          });
+        })
+
         todoListElement.appendChild(todoItemElement);
       });
       // containerElementの中身をtodoListElementで上書きする
