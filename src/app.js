@@ -19,8 +19,8 @@ export default class App {
     // Changeイベントリスナーを登録
     this.todoListModel.onChange(() => {
       const todoListElement = createElement`<ul />`;
-      const todoItems = this.todoListModel.getTodoItems();
-      todoItems.forEach(item => {
+      const todoItemList = this.todoListModel.getTodoItemList();
+      todoItemList.forEach(item => {
         const todoItemElement = createElement`<li>${item.title}</li>`;
         todoListElement.appendChild(todoItemElement);
       });

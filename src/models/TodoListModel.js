@@ -24,7 +24,7 @@ export default class TodoListModel extends EventEmitter {
    *
    * @returns {Array}
    */
-  getTodoItems() {
+  getTodoItemList() {
     return this.itemList;
   }
 
