@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Todo</title>
-    <!-- Style -->
-    <!-- <script type="text/javascript" src="/assets/index.css"></script> -->
 </head>
 <body>
     <main class="todo-app">
 
-        <form action="" id="js-form">
-            <input id="js-form-input" type="text" placeholder="Please add todo">
+        <form action="" id="js-form" class="form-group">
+            <input id="js-form-input" class="form-group-input" type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="form-group-label">Please add todo</label>
         </form>
 
         <div id="js-todo-list">
