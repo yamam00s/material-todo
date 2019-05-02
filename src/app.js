@@ -1,7 +1,7 @@
-/* eslint-disable prettier/prettier */
-import TodoListModel from './models/TodoListModel';
 import TodoItemModel from './models/TodoItemModel';
-import { createElement, renderElement } from './utils/createTodoElement';
+import TodoListModel from './models/TodoListModel';
+import TodoListView from './views/TodoListView';
+import { renderElement } from './utils/createTodoElement';
 
 export default class App {
   /**
@@ -9,6 +9,39 @@ export default class App {
    */
   constructor() {
     this.todoListModel = new TodoListModel();
+    this.todoListView = new TodoListView();
+  }
+
+  /**
+   * Todoを追加時に呼ばれるリスナー関数
+   *
+   * @param {string} title
+   */
+  handleAdd(title) {
+    this.todoListModel.addTodo(
+      new TodoItemModel({
+        title,
+        completed: false
+      })
+    );
+  }
+
+  /**
+   * Todoの状態を更新時に呼ばれるリスナー関数
+   *
+   * @param {{ id:number, completed: boolean }}
+   */
+  handleUpdate({ id, completed }) {
+    this.todoListModel.updateTodo({ id, completed });
+  }
+
+  /**
+   * Todoを削除時に呼ばれるリスナー関数
+   *
+   * @param {{ id: number }}
+   */
+  handleDelete({ id }) {
+    this.todoListModel.deleteTodo({ id });
   }
 
   mounted() {
@@ -19,39 +52,19 @@ export default class App {
 
     // Changeイベントリスナーを登録
     this.todoListModel.onChange(() => {
-      const todoListElement = createElement`<ul />`;
       const todoItemList = this.todoListModel.getTodoItemList();
 
-      todoItemList.forEach(todoItem => {
-        const todoItemElement = todoItem.completed
-          ? createElement`<li><input type="checkbox" class="checkbox" checked>
-            <s>${todoItem.title}</s>
-            <button class="delete">x</button>
-          </li>`
-          : createElement`<li><input type="checkbox" class="checkbox">
-            ${todoItem.title}
-            <button class="delete">x</button>
-          </li>`;
-
-        // チェックボックスがトグルしたときのイベントにリスナー関数を登録
-        const inputCheckboxElement = todoItemElement.querySelector('.checkbox');
-        inputCheckboxElement.addEventListener('change', () => {
-          this.todoListModel.updateTodo({
-            id: todoItem.id,
-            completed: !todoItem.completed
-          });
-        });
-
-        // 削除ボタン(x)をクリック時にTodoListModelからアイテムを削除するリスナー関数を登録
-        const deleteButtonElement = todoItemElement.querySelector('.delete');
-        deleteButtonElement.addEventListener('click', () => {
-          this.todoListModel.deleteTodo({
-            id: todoItem.id,
-          });
-        });
-
-        todoListElement.appendChild(todoItemElement);
-      });
+      const todoListElement = this.todoListView.createTodoListElement(
+        todoItemList,
+        {
+          onUpdateTodo: ({ id, completed }) => {
+            this.handleUpdate({ id, completed });
+          },
+          onDeleteTodo: ({ id }) => {
+            this.handleDelete({ id });
+          }
+        }
+      );
       // containerElementの中身をtodoListElementで上書きする
       renderElement(todoListElement, containerElement);
       // アイテム数の表示を更新
@@ -63,12 +76,7 @@ export default class App {
     formElement.addEventListener('submit', event => {
       event.preventDefault();
       // 新しいTodoItemをTodoListへ追加する（モデルが変更される）
-      this.todoListModel.addTodo(
-        new TodoItemModel({
-          title: inputElement.value,
-          completed: false
-        })
-      );
+      this.handleAdd(inputElement.value);
       inputElement.value = '';
     });
   }
