@@ -14,9 +14,6 @@
 ## HTTT Client
 - axios
 
-## UIフレームワーク
-- Materialize
-
 ## eslint
 - eslint
 - eslint-config-airbnb-base
