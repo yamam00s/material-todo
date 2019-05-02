@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+/* eslint-disable prettier/prettier */
 import { createElement } from '../utils/createTodoElement';
 
 export default class TodoItemView {
@@ -12,13 +13,23 @@ export default class TodoItemView {
 
   createTodoItemElement(todoItem, { onUpdateTodo, onDeleteTodo }) {
     const todoItemElement = todoItem.completed
-      ? createElement`<li><input type="checkbox" class="checkbox" checked>
-      <s>${todoItem.title}</s>
-      <button class="delete">x</button>
+      ? createElement`<li class="list-item-done list-item">
+      <label class="list-item-label">
+        <input type="checkbox" class="checkbox list-item-checkbox" checked>
+        <span class="list-item-text">${todoItem.title}</span>
+      </label>
+      <button class="delete button-circle button-delete">
+        <i class="material-icons">cancel</i>
+      </button>
     </li>`
-      : createElement`<li><input type="checkbox" class="checkbox">
-      ${todoItem.title}
-      <button class="delete">x</button>
+      : createElement`<li class="list-item">
+      <label class="list-item-label">
+        <input type="checkbox" class="checkbox list-item-checkbox">
+        <span class="list-item-text">${todoItem.title}</span>
+      </label>
+      <button class="delete button-circle button-delete">
+        <i class="material-icons">cancel</i>
+      </button>
     </li>`;
 
     // チェックボックスがトグルしたときのイベントリスナー

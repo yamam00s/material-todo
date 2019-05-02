@@ -1,0 +1,109 @@
+.form-group {
+  margin-top: 50px;
+  position: relative;
+}
+
+.form-input {
+  display: block;
+  width: 300px;
+  padding: 10px 10px 10px 5px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid #757575;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-label {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+
+.form-highlight {
+  position: absolute;
+  height: 60%;
+  width: 150px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.form-bar {
+  position: relative;
+  display: block;
+  width: 300px;
+
+  &:before,
+  &:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+  }
+
+  &:before {
+    left: 50%;
+  }
+
+  &:after {
+    right: 50%;
+  }
+}
+
+
+.form-input:focus ~ {
+  .form-highlight {
+    animation: inputHighlighter 0.3s ease;
+  }
+
+  .form-label,
+  .form-label {
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+  }
+
+  .form-bar:before,
+  .form-bar:after {
+    width:50%;
+  }
+}
+
+.form-input:valid  ~ {
+  .form-label,
+  .form-label {
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+  }
+}
+
+.form-input:focus ~ .form-highlight {
+  animation:inputHighlighter 0.3s ease;
+}
+
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

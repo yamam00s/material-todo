@@ -1,0 +1,38 @@
+.list-contents {
+  margin-top: 50px;
+}
+
+.list-item {
+  display: inline-block;
+  height: 32px;
+  margin: 10px 10px 2px 0;
+  padding: 0 12px;
+  line-height: 32px;
+  color: rgba(0,0,0,.87);
+  border: 0;
+  border-radius: 16px;
+  background-color: #dedede;
+  font-size: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.list-item-done {
+  background: #5264AE;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.list-item-label {
+  width: 100%;
+}
+
+.list-item-checkbox {
+  display: none;
+}
+
+.list-item-text {
+  display: inline-block;
+  padding: 0 5px;
+  vertical-align: middle;
+  font-size: 14px;
+}

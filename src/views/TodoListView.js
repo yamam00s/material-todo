@@ -11,7 +11,7 @@ export default class TodoListView {
    * @returns {Element} TodoItemModelの配列に対応したリストのHTML要素
    */
   createTodoListElement(todoItemList, { onUpdateTodo, onDeleteTodo }) {
-    const todoListElement = createElement`<ul />`;
+    const todoListElement = createElement`<ul class="list-contents" />`;
     todoItemList.forEach(todoItem => {
       const todoItemView = new TodoItemView();
       const todoItemElement = todoItemView.createTodoItemElement(todoItem, {

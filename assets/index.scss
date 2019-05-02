@@ -1,133 +1,33 @@
 @charset 'utf-8';
+@import './modules/icons.scss';
+@import './modules/forms.scss';
+@import './modules/lists.scss';
+@import './modules/buttons.scss';
 
 * {
   box-sizing: border-box;
+  list-style-type: none;
 }
 
 html,
 body {
+  width: 100%;
+  height: auto;
+  color: #333;
   background: #f1f1f1;
   font-family: Roboto, Helvetica, sans-serif;
 }
 
 .todo-app {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: auto;
   margin: 30px auto;
+  padding: 30px;
   background: #fff;
-  padding: 50px;
-  text-align: center;
   box-shadow: 5px 5px 10px #999;
+  border-radius: 3px;
+  overflow: hidden;
 }
-
-.form-group {
-  position: relative;
-  margin-bottom: 45px;
-}
-
-.form-group-input {
-  display: block;
-  width: 300px;
-  padding: 10px 10px 10px 5px;
-  font-size: 18px;
-  border: none;
-  border-bottom: 1px solid #757575;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.form-group-label {
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  color: #999;
-  font-size: 18px;
-  font-weight: normal;
-  transition: 0.2s ease all;
-  pointer-events: none;
-}
-
-
-.highlight {
-  position: absolute;
-  height: 60%;
-  width: 150px;
-  top: 25%;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.bar {
-  position: relative;
-  display: block;
-  width: 300px;
-
-  &:before,
-  &:after {
-    content: '';
-    height: 2px;
-    width: 0;
-    bottom: 1px;
-    position: absolute;
-    background: #5264AE;
-    transition: 0.2s ease all;
-  }
-
-  &:before {
-    left: 50%;
-  }
-
-  &:after {
-    right: 50%;
-  }
-}
-
-
-/* active state */
-.form-group-input:focus ~ {
-  .highlight {
-    animation: inputHighlighter 0.3s ease;
-  }
-
-  .form-group-label,
-  .form-group-label {
-    top:-20px;
-    font-size:14px;
-    color:#5264AE;
-  }
-
-  .bar:before,
-  .bar:after {
-    width:50%;
-  }
-}
-
-.form-group-input:valid  ~ {
-  .form-group-label,
-  .form-group-label {
-    top:-20px;
-    font-size:14px;
-    color:#5264AE;
-  }
-}
-
-/* active state */
-input:focus ~ .highlight {
-  animation:inputHighlighter 0.3s ease;
-}
-
-
-/* ANIMATIONS ================ */
-@keyframes inputHighlighter {
-  from {
-    background: #5264AE;
-  }
-
-  to {
-    width: 0;
-    background: transparent;
-  }
+.footer {
+  margin-top: 50px;
 }
